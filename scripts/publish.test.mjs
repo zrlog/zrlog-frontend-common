@@ -25,13 +25,10 @@ if (args[1] === 'put-object') {
     fs.copyFileSync(option('--body'), object);
 } else {
     fs.copyFileSync(object, args.at(-1));
+    if (process.env.TEST_CORRUPT_GET) fs.appendFileSync(args.at(-1), 'corrupt');
 }
 `);
-        executable('curl', `
-const fs = require('fs'), path = require('path'), args = process.argv.slice(2);
-const url = new URL(args.find(arg => arg.startsWith('https://')));
-fs.copyFileSync(path.join(process.env.TEST_STORE, url.pathname), args[args.indexOf('--output') + 1]);
-`);
+        executable('curl', "throw new Error('Public CDN must not be requested by GitHub publishing');");
         const release = join(root, 'artifacts/0.1.0');
         const prepare = (content, source) => {
             const file = 'zrlog-ui-0.1.0.tgz';
@@ -40,12 +37,13 @@ fs.copyFileSync(path.join(process.env.TEST_STORE, url.pathname), args[args.index
             writeFileSync(join(release, 'SHA256SUMS'), `${sha256}  ${file}\n`);
             writeFileSync(join(release, 'manifest.json'), JSON.stringify({version:'0.1.0', source, packages:[{file, sha256}]}));
         };
-        const publish = () => spawnSync('bash', ['scripts/publish.sh'], {
+        const publish = (extra = {}) => spawnSync('bash', ['scripts/publish.sh'], {
             cwd: root, encoding: 'utf8', env: {...process.env,
                 PATH: `${join(root, 'bin')}:${process.env.PATH}`,
                 TEST_STORE: join(root, 'store'), RELEASE_VERSION: '0.1.0',
                 CDN_BUCKET: 'test', CDN_ENDPOINT: 'https://example.invalid',
                 AWS_ACCESS_KEY_ID: 'test', AWS_SECRET_ACCESS_KEY: 'test',
+                ...extra,
             },
         });
         prepare('first package', 'first-commit');
@@ -54,9 +52,12 @@ fs.copyFileSync(path.join(process.env.TEST_STORE, url.pathname), args[args.index
         prepare('first package', 'workflow-fix');
         result = publish();
         assert.equal(result.status, 0, result.stderr);
-        assert.match(result.stdout, /Reusing identical/);
+        assert.match(result.stdout, /Verified stored/);
         const stored = join(root, 'store/frontend-common/0.1.0');
         assert.equal(JSON.parse(readFileSync(join(stored, 'manifest.json'))).source, 'first-commit');
+        assert.equal(JSON.parse(readFileSync(join(release, 'manifest.json'))).source, 'first-commit');
+        result = publish({TEST_CORRUPT_GET: '1'});
+        assert.notEqual(result.status, 0, 'Corrupt S3 readback must fail');
         prepare('changed package', 'new-commit');
         result = publish();
         assert.notEqual(result.status, 0);

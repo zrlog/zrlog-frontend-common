@@ -10,4 +10,5 @@
 - React、React DOM、Ant Design 为 peer dependencies，不打包另一份运行时。
 - 修改后运行 `npm test` 和 `npm run pack`，从实际 tarball 验证 admin/install 的类型、相关行为和生产构建。
 - 共享主题修改补充后台主题切换、安装页明暗、桌面/移动和表单状态验收。SSE 修改覆盖 UTF-8/换行跨块、断流、错误和终止事件。
+- GitHub Actions 仅通过 S3 endpoint 核验上传，不请求 Cloudflare 公开 CDN；消费者使用固定 GitHub Release tarball URL，CDN 保留为相同内容的分发出口。
 - 发布为手动 workflow，版本 URL 不覆盖；凭据通过 GitHub Secrets 注入，不写入代码、日志或包内容。

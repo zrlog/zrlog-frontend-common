@@ -7,7 +7,7 @@ on:
         required: true
         type: string
 permissions:
-  contents: read
+  contents: write
 concurrency:
   group: frontend-package-publish
   cancel-in-progress: false
@@ -26,11 +26,7 @@ jobs:
         env:
           RELEASE_VERSION: ${{ inputs.version }}
         run: npm run pack -- "$RELEASE_VERSION"
-      - uses: actions/upload-artifact@v4
-        with:
-          name: frontend-packages-${{ inputs.version }}
-          path: artifacts/
-      - name: Upload immutable packages and verify CDN downloads
+      - name: Upload immutable packages and verify through S3
         env:
           RELEASE_VERSION: ${{ inputs.version }}
           AWS_ACCESS_KEY_ID: ${{ secrets.SECRET_ID }}
@@ -39,3 +35,13 @@ jobs:
           CDN_BUCKET: ${{ secrets.BUCKET }}
           CDN_ENDPOINT: ${{ secrets.HOST }}
         run: bash scripts/publish.sh
+      - name: Publish identical packages to GitHub Releases
+        env:
+          RELEASE_VERSION: ${{ inputs.version }}
+          GH_TOKEN: ${{ github.token }}
+        run: node scripts/publish-github.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: frontend-packages-${{ inputs.version }}
+          path: artifacts/
