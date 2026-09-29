@@ -1,0 +1,41 @@
+name: Publish frontend packages
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Source package version to publish, for example 0.1.0'
+        required: true
+        type: string
+permissions:
+  contents: read
+concurrency:
+  group: frontend-package-publish
+  cancel-in-progress: false
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+      - run: npm ci
+      - run: npm test
+      - name: Build versioned packages
+        env:
+          RELEASE_VERSION: ${{ inputs.version }}
+        run: npm run pack -- "$RELEASE_VERSION"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: frontend-packages-${{ inputs.version }}
+          path: artifacts/
+      - name: Upload immutable packages and verify CDN downloads
+        env:
+          RELEASE_VERSION: ${{ inputs.version }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.SECRET_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.SECRET_KEY }}
+          AWS_DEFAULT_REGION: auto
+          CDN_BUCKET: ${{ secrets.BUCKET }}
+          CDN_ENDPOINT: ${{ secrets.HOST }}
+        run: bash scripts/publish.sh

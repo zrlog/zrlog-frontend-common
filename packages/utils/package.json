@@ -1,0 +1,26 @@
+{
+  "name": "@zrlog/utils",
+  "version": "0.1.0",
+  "description": "Framework-independent browser utilities shared by ZrLog applications",
+  "license": "Apache-2.0",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "sideEffects": false,
+  "scripts": {
+    "build": "tsc --project tsconfig.json",
+    "test": "node --test test/*.test.cjs"
+  },
+  "devDependencies": {
+    "typescript": "5.8.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zrlog/zrlog-frontend-common.git",
+    "directory": "packages/utils"
+  }
+}

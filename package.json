@@ -1,0 +1,13 @@
+{
+  "name": "zrlog-frontend-common",
+  "version": "0.1.0",
+  "private": true,
+  "license": "Apache-2.0",
+  "workspaces": ["packages/*"],
+  "scripts": {
+    "build": "npm run build --workspaces",
+    "test": "npm run build && npm run test --workspaces && node --test scripts/*.test.mjs",
+    "pack": "npm run build && node scripts/pack.mjs"
+  },
+  "engines": { "node": ">=20" }
+}
