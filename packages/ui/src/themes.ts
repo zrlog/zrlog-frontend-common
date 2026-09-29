@@ -16,10 +16,10 @@ export const UI_THEMES = [
 export type UiTheme = (typeof UI_THEMES)[number]["id"];
 export type UiThemeDefinition = { id: UiTheme; colorMode: "selectable" | "light" | "dark"; primaryColor?: string };
 
-export const getUiThemeDefinition = (id: string): UiThemeDefinition =>
+export const getUiThemeDefinition = (id?: string | null): UiThemeDefinition =>
     UI_THEMES.find((item) => item.id === id) ?? UI_THEMES[0];
 
-export const supportsDarkMode = (id: string) => getUiThemeDefinition(id).colorMode === "selectable";
-export const supportsCustomPrimary = (id: string) => getUiThemeDefinition(id).primaryColor === undefined;
+export const supportsDarkMode = (id?: string | null) => getUiThemeDefinition(id).colorMode === "selectable";
+export const supportsCustomPrimary = (id?: string | null) => getUiThemeDefinition(id).primaryColor === undefined;
 export const getUiThemeOptions = (labels: Record<UiTheme, string>) =>
     UI_THEMES.map(({ id }) => ({ value: id, label: labels[id] }));

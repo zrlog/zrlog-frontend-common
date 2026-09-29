@@ -16,7 +16,7 @@ function Application({ theme, colorPrimary, dark, compactMode, children }) {
 ```
 
 - `@zrlog/ui/themes`：不加载 React / Ant Design 的轻量目录入口；`UI_THEMES`、`UiTheme`、`UiThemeDefinition`：九套主题标识、顺序、明暗与主色能力的唯一目录。
-- `getUiThemeDefinition(name)`：未知标识兼容回退 default；`getUiThemeOptions(labels)` 接收宿主文案。
+- `getUiThemeDefinition(name)`：缺失、`null`、空字符串及未知标识统一回退 default；`useUiTheme` 与 `ThemeStyles` 使用同一规则。`getUiThemeOptions(labels)` 接收宿主文案。
 - `supportsDarkMode(name)`、`supportsCustomPrimary(name)`：表单与初始化共用能力查询。
 - `useUiTheme(options)`：选择 default M3、Desk、Ant Design、Glass、Shadcn、Geek、Cartoon、Illustration、Bootstrap；固定明暗/主色的主题仍保留自身风格。
 - `ThemeAppearance`、`UiThemeOptions`、`ColorMode`：公开外观类型。模式选择、默认值和保存归属宿主。
@@ -32,6 +32,6 @@ React 18.3.1、Ant Design 6.4.3 为当前验证版本，二者和 React DOM 通�
 后台导航、仪表盘、文章列表、编辑器宿主适配、权限、路由和文案不包含在本包。
 同时挂载不同主题的多个嵌套 UI 根不是当前版本支持范围。
 
-构建、测试与 CDN 发布统一使用仓库根的 npm scripts，见 [根 README](../../README.md)。
+构建、测试与 npmjs 发布统一使用仓库根的 npm scripts，见 [根 README](../../README.md)。
 
 同时提供 CommonJS（Node / Jest）与 ESM（浏览器 bundler）入口，避免整库 CommonJS 阻止消费者移除未用组件。

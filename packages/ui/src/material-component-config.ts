@@ -22,6 +22,8 @@ export const materialComponentConfig = (c: ReturnType<typeof materialColors>, br
     },
     radio: { classNames: { root: "zrlog-m3-radio", icon: "zrlog-m3-radio-icon" } },
     segmented: {
+        // M3 rounds the outer group; inner segments keep their shared straight edges.
+        styles: { root: { borderRadius: 9999 } },
         classNames: ({ props }) => ({
             root: `zrlog-m3-segmented${props.vertical || props.orientation === "vertical" ? " zrlog-m3-segmented-vertical" : ""}${props.size === "small" ? " zrlog-m3-segmented-small" : ""}`,
             item: "zrlog-m3-segment",
@@ -43,9 +45,16 @@ export const materialComponentConfig = (c: ReturnType<typeof materialColors>, br
             close: "zrlog-m3-chip-close",
         }),
         styles: ({ props }) => ({
-            root: !props.disabled && (props.onClick || props.href || props.closable) &&
-                (!props.color || props.color === brand)
-                ? { background: c.primaryContainer, color: c.onPrimaryContainer, borderColor: "transparent" } : {},
+            root: {
+                // A flex row can stretch plain Tags to the taller chip height.
+                // Center their line boxes without replacing display (Tag hides itself on close).
+                alignContent: "center",
+                textAlign: "center",
+                verticalAlign: "middle",
+                ...(!props.disabled && (props.onClick || props.href || props.closable) &&
+                    (!props.color || props.color === brand)
+                    ? { background: c.primaryContainer, color: c.onPrimaryContainer, borderColor: "transparent" } : {}),
+            },
         }),
     },
     slider: {

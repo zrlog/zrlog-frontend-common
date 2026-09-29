@@ -41,6 +41,19 @@ test("multiple brand marks have isolated SVG references and optional accessible 
     assert.match(markup, /role="img" aria-label="ZrLog"/);
 });
 
+test("missing, null, empty and unknown theme values render the complete default theme", () => {
+    const Preview = ({ name }) => React.createElement(ConfigProvider,
+        useUiTheme({ theme: name, colorPrimary: "#1677ff", dark: false }),
+        React.createElement(ThemeStyles, { theme: name }), React.createElement(Spin), React.createElement(Switch));
+    for (const name of [undefined, null, "", "unknown-theme"]) {
+        const markup = renderToStaticMarkup(React.createElement(Preview, { name }));
+        assert.match(markup, /class="zrlog-material-spin/);
+        assert.match(markup, /data-zrlog-material-controls/);
+        assert.match(markup, /zrlog-m3-switch/);
+        assert.doesNotMatch(markup, /data-zrlog-desk-style/);
+    }
+});
+
 test("custom color and density produce real Ant Design tokens", () => {
     for (const dark of [false, true]) {
         const normal = createMaterialTheme({ colorPrimary: "#00875a", dark });

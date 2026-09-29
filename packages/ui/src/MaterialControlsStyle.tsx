@@ -135,11 +135,15 @@ const MaterialControlsStyle = () => {
             background: ${t.colorBgContainer};
         }
         .zrlog-m3-segmented.zrlog-m3-segmented {
+            box-sizing: border-box;
+            max-width: 100%;
             border: ${t.lineWidth}px solid ${t.colorBorder};
             padding: 0;
             overflow: hidden;
         }
         .zrlog-m3-segmented .zrlog-m3-segment.zrlog-m3-segment {
+            min-width: 0;
+            flex: 1 1 auto;
             border-radius: 0;
             box-shadow: none;
         }
@@ -151,10 +155,11 @@ const MaterialControlsStyle = () => {
             border-block-start: ${t.lineWidth}px solid ${t.colorBorder};
         }
         .zrlog-m3-segment-label.zrlog-m3-segment-label {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
+            box-sizing: border-box;
+            display: block;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
             padding-inline: 16px;
             min-height: 38px;
         }
@@ -162,7 +167,9 @@ const MaterialControlsStyle = () => {
             content: "";
             width: 12px;
             height: 12px;
-            flex: none;
+            display: inline-block;
+            vertical-align: middle;
+            margin-inline-end: 8px;
             background: currentColor;
             clip-path: polygon(0 48%, 14% 34%, 38% 58%, 85% 10%, 100% 25%, 38% 88%);
         }
@@ -248,6 +255,7 @@ const MaterialControlsStyle = () => {
         }
         .zrlog-m3-drawer-footer.zrlog-m3-drawer-footer { border-top: 0; }
         .zrlog-m3-menu-item.zrlog-m3-menu-item {
+            box-sizing: border-box;
             min-height: 48px;
             padding-inline: 16px;
             border-radius: 0;

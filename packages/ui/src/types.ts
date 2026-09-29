@@ -5,6 +5,6 @@ export type ThemeAppearance = {
 };
 
 export type UiThemeOptions = ThemeAppearance & {
-    theme: string;
+    theme?: string | null;
 };
 export type ColorMode = "light" | "dark" | "system";
