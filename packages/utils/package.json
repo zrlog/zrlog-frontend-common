@@ -22,5 +22,9 @@
     "type": "git",
     "url": "https://github.com/zrlog/zrlog-frontend-common.git",
     "directory": "packages/utils"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   }
 }

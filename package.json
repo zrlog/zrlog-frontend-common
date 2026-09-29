@@ -3,11 +3,15 @@
   "version": "0.1.0",
   "private": true,
   "license": "Apache-2.0",
-  "workspaces": ["packages/*"],
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
     "build": "npm run build --workspaces",
-    "test": "npm run build && npm run test --workspaces && node --test scripts/*.test.mjs",
-    "pack": "npm run build && node scripts/pack.mjs"
+    "test": "npm run build && npm run test --workspaces",
+    "pack": "npm run build && mkdir -p .tmp/packages && npm pack --workspaces --pack-destination .tmp/packages"
   },
-  "engines": { "node": ">=20" }
+  "engines": {
+    "node": ">=20"
+  }
 }
