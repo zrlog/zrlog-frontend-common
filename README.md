@@ -36,6 +36,6 @@ UI 接入见 [packages/ui](packages/ui/README.md)，工具 API 见 [packages/uti
 }
 ```
 
-首次发布需要 npmjs 上 `@zrlog` scope 的发布权限，并在仓库 Actions Secrets 配置 `NPM_TOKEN`。消费者在版本实际发布后通过 Yarn 安装并更新锁文件；公共库后续修改先发布新版本，再显式升级消费者。
+首次发布需要 npmjs 上 `@zrlog` scope 的发布权限，并在仓库 Actions Secrets 配置 `NPM_PUBLISH_SECRET`。消费者在版本实际发布后通过 Yarn 安装并更新锁文件；公共库后续修改先发布新版本，再显式升级消费者。
 
 开发时可使用 `npm run pack` 在 `.tmp/packages/` 生成的 tarball 联调，不提交本机路径依赖。正式依赖从 npm registry 下载，不依赖 GitHub raw 或 Cloudflare CDN。

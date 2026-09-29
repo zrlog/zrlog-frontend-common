@@ -5,7 +5,7 @@
 ## 首次配置
 
 - npmjs 上具有 `@zrlog` scope 的包创建/发布权限。
-- 在公共仓库 GitHub Actions Secrets 配置 `NPM_TOKEN`。使用有目标包或组织发布权限的 npm granular access token；无人值守发布需要允许绕过 2FA。不要把 token 写入代码、包或对话。
+- 在公共仓库 GitHub Actions Secrets 配置 `NPM_PUBLISH_SECRET`。使用有目标包或组织发布权限的 npm granular access token；无人值守发布需要允许绕过 2FA。不要把 token 写入代码、包或对话。
 - 两个包的 `publishConfig` 指定 npmjs registry 与 public access；根包保持 private。
 
 ## 发布与升级

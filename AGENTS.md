@@ -11,4 +11,4 @@
 - 修改后运行 `npm test` 和 `npm run pack`，从实际 tarball 验证 admin/install 的类型、相关行为和生产构建。
 - 共享主题修改补充后台主题切换、安装页明暗、桌面/移动和表单状态验收。SSE 修改覆盖 UTF-8/换行跨块、断流、错误和终止事件。
 - 公共包发布到 npmjs；消费者使用固定版本与锁文件，正式依赖不指向 CDN、GitHub raw 或本机文件。
-- 使用标准 `npm publish --workspaces --access public`，发布为手动 workflow；`NPM_TOKEN` 通过 GitHub Secrets 注入，不写入代码、日志或包内容。已发布版本不可覆盖。
+- 使用标准 `npm publish --workspaces --access public`，发布为手动 workflow；`NPM_PUBLISH_SECRET` 通过 GitHub Secrets 注入，不写入代码、日志或包内容。已发布版本不可覆盖。
