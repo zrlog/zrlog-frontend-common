@@ -2,13 +2,19 @@ import { theme } from "antd";
 import { FastColor } from "@ant-design/fast-color";
 
 // Mounted by MaterialStyles below the consumer ConfigProvider. Every selector targets a semantic class
-// supplied by materialComponentConfig, never an independent theme or a field.
+// supplied by materialComponentConfig, never an independent theme.
 const MaterialControlsStyle = () => {
     const { token: t } = theme.useToken();
     const stateHover = new FastColor(t.colorPrimary).setA(0.08).toRgbString();
     const statePressed = new FastColor(t.colorPrimary).setA(0.12).toRgbString();
     return (
         <style data-zrlog-material-controls>{`
+        /* Search is one rounded control. Keep the joined edge and focus ring intact. */
+        .zrlog-m3-search .zrlog-m3-search-field {
+            border-start-start-radius: 9999px;
+            border-end-start-radius: 9999px;
+            padding-inline-start: ${t.padding}px;
+        }
         .zrlog-m3-switch.zrlog-m3-switch {
             box-sizing: border-box;
             border: 2px solid ${t.colorBorder};

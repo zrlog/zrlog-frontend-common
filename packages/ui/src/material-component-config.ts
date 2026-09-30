@@ -5,6 +5,12 @@ import type { materialColors } from "./material-colors";
 // Public semantic slots keep Material presentation inside the selected theme,
 // including portals. Component-level props/styles retain their normal precedence.
 export const materialComponentConfig = (c: ReturnType<typeof materialColors>, brand: string): ConfigProviderProps => ({
+    inputSearch: {
+        classNames: { root: "zrlog-m3-search" },
+    },
+    input: {
+        classNames: ({ props }) => ({ root: props.type === "search" ? "zrlog-m3-search-field" : "" }),
+    },
     switch: {
         classNames: ({ props }) => ({
             root: `zrlog-m3-switch${props.size === "small" ? " zrlog-m3-switch-small" : ""}`,

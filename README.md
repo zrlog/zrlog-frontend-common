@@ -31,8 +31,8 @@ UI 接入见 [packages/ui](packages/ui/README.md)，工具 API 见 [packages/uti
 
 ```json
 {
-  "@zrlog/ui": "0.1.1",
-  "@zrlog/utils": "0.1.1"
+  "@zrlog/ui": "0.1.2",
+  "@zrlog/utils": "0.1.2"
 }
 ```
 
