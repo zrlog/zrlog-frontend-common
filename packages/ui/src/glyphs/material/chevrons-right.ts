@@ -1,0 +1,5 @@
+// Generated from Google Material Symbols Rounded/keyboard_double_arrow_right @ 737e3324305806514d7909874fa1818ae1808232. See THIRD_PARTY_NOTICES.md.
+import type { IconVariants, IconGlyph } from "../../UiIcon";
+const regular: IconGlyph = {"viewBox":"0 -960 960 960","nodes":[{"tag":"path","attrs":{"d":"M383-480 228-636q-11-11-11.5-27.5T228-692q11-11 28-11t28 11l184 184q6 6 8.5 13t2.5 15q0 8-2.5 15t-8.5 13L284-268q-11 11-27.5 11.5T228-268q-11-11-11-28t11-28l155-156Zm264 0L492-636q-11-11-11.5-27.5T492-692q11-11 28-11t28 11l184 184q6 6 8.5 13t2.5 15q0 8-2.5 15t-8.5 13L548-268q-11 11-27.5 11.5T492-268q-11-11-11-28t11-28l155-156Z"}}]};
+const glyphs: IconVariants = { regular };
+export default glyphs;

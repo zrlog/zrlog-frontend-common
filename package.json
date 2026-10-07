@@ -1,6 +1,6 @@
 {
   "name": "zrlog-frontend-common",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "private": true,
   "license": "Apache-2.0",
   "workspaces": [
@@ -13,5 +13,8 @@
   },
   "engines": {
     "node": ">=20"
+  },
+  "devDependencies": {
+    "@ant-design/icons-svg": "4.5.0"
   }
 }

@@ -1,11 +1,14 @@
 import type { CSSProperties } from "react";
 import type { ConfigProviderProps } from "antd";
 import type { materialColors } from "./material-colors";
+import { materialIconConfig } from "./material-icon-config";
 
 // Public semantic slots keep Material presentation inside the selected theme,
 // including portals. Component-level props/styles retain their normal precedence.
 export const materialComponentConfig = (c: ReturnType<typeof materialColors>, brand: string): ConfigProviderProps => ({
+    ...materialIconConfig,
     inputSearch: {
+        ...materialIconConfig.inputSearch,
         classNames: { root: "zrlog-m3-search" },
     },
     input: {
@@ -37,6 +40,7 @@ export const materialComponentConfig = (c: ReturnType<typeof materialColors>, br
         }),
     },
     tabs: {
+        ...materialIconConfig.tabs,
         classNames: { item: "zrlog-m3-tab", indicator: "zrlog-m3-tab-indicator" },
         indicator: { size: (width) => Math.max(24, width - 32), align: "center" },
         styles: ({ props }) => ({
@@ -81,6 +85,7 @@ export const materialComponentConfig = (c: ReturnType<typeof materialColors>, br
         },
     },
     button: {
+        ...materialIconConfig.button,
         classNames: ({ props }) => ({
             root: [
                 "zrlog-m3-button",
@@ -91,11 +96,13 @@ export const materialComponentConfig = (c: ReturnType<typeof materialColors>, br
         }),
     },
     modal: {
+        ...materialIconConfig.modal,
         classNames: { container: "zrlog-m3-dialog", header: "zrlog-m3-dialog-header", footer: "zrlog-m3-dialog-footer", close: "zrlog-m3-close" },
         styles: { title: { paddingInlineEnd: 32 } },
         cancelButtonProps: { type: "text" },
     },
     drawer: {
+        ...materialIconConfig.drawer,
         // The outer provider's drawer defaults are replaced by this object.
         closable: { placement: "end" },
         classNames: { header: "zrlog-m3-drawer-header", title: "zrlog-m3-drawer-title", footer: "zrlog-m3-drawer-footer", close: "zrlog-m3-close" },

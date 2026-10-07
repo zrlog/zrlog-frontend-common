@@ -1,0 +1,5 @@
+// Generated from Ant Design icons-svg 4.5.0. See THIRD_PARTY_NOTICES.md.
+import type { IconVariants, IconGlyph } from "../../UiIcon";
+const regular: IconGlyph = {"viewBox":"64 64 896 896","nodes":[{"tag":"path","attrs":{"d":"M832 64H192c-17.7 0-32 14.3-32 32v832c0 17.7 14.3 32 32 32h640c17.7 0 32-14.3 32-32V96c0-17.7-14.3-32-32-32zm-600 72h560v208H232V136zm560 480H232V408h560v208zm0 272H232V680h560v208zM304 240a40 40 0 1080 0 40 40 0 10-80 0zm0 272a40 40 0 1080 0 40 40 0 10-80 0zm0 272a40 40 0 1080 0 40 40 0 10-80 0z"}}]};
+const glyphs: IconVariants = { regular, selected: {"viewBox":"64 64 896 896","nodes":[{"tag":"path","attrs":{"d":"M832 64H192c-17.7 0-32 14.3-32 32v224h704V96c0-17.7-14.3-32-32-32zM288 232c-22.1 0-40-17.9-40-40s17.9-40 40-40 40 17.9 40 40-17.9 40-40 40zM160 928c0 17.7 14.3 32 32 32h640c17.7 0 32-14.3 32-32V704H160v224zm128-136c22.1 0 40 17.9 40 40s-17.9 40-40 40-40-17.9-40-40 17.9-40 40-40zM160 640h704V384H160v256zm128-168c22.1 0 40 17.9 40 40s-17.9 40-40 40-40-17.9-40-40 17.9-40 40-40z"}}]} };
+export default glyphs;

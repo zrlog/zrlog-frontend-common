@@ -2,19 +2,20 @@
 // Labels remain in each host’s i18n; implementations live in this package.
 export const DEFAULT_PRIMARY_COLOR = "#1677ff";
 export const UI_THEMES = [
-    { id: "default", colorMode: "selectable" },
-    { id: "desk", colorMode: "light", primaryColor: "#172033" },
-    { id: "antd", colorMode: "selectable" },
-    { id: "bootstrap", colorMode: "light" },
-    { id: "geek", colorMode: "dark", primaryColor: "#39ff14" },
-    { id: "cartoon", colorMode: "light", primaryColor: "#225555" },
-    { id: "glass", colorMode: "light" },
-    { id: "shadcn", colorMode: "light", primaryColor: "#262626" },
-    { id: "illustration", colorMode: "light", primaryColor: "#52C41A" },
+    { id: "default", colorMode: "selectable", iconSet: "material-symbols-rounded" },
+    { id: "desk", colorMode: "light", primaryColor: "#172033", iconSet: "antd" },
+    { id: "antd", colorMode: "selectable", iconSet: "antd" },
+    { id: "bootstrap", colorMode: "light", iconSet: "antd" },
+    { id: "geek", colorMode: "dark", primaryColor: "#39ff14", iconSet: "antd" },
+    { id: "cartoon", colorMode: "light", primaryColor: "#225555", iconSet: "antd" },
+    { id: "glass", colorMode: "light", iconSet: "antd" },
+    { id: "shadcn", colorMode: "light", primaryColor: "#262626", iconSet: "antd" },
+    { id: "illustration", colorMode: "light", primaryColor: "#52C41A", iconSet: "antd" },
 ] as const;
 
 export type UiTheme = (typeof UI_THEMES)[number]["id"];
-export type UiThemeDefinition = { id: UiTheme; colorMode: "selectable" | "light" | "dark"; primaryColor?: string };
+export type UiIconSet = "material-symbols-rounded" | "antd";
+export type UiThemeDefinition = { id: UiTheme; colorMode: "selectable" | "light" | "dark"; primaryColor?: string; iconSet: UiIconSet };
 
 export const getUiThemeDefinition = (id?: string | null): UiThemeDefinition =>
     UI_THEMES.find((item) => item.id === id) ?? UI_THEMES[0];

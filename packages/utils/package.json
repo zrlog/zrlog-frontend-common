@@ -1,6 +1,6 @@
 {
   "name": "@zrlog/utils",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "Framework-independent browser utilities shared by ZrLog applications",
   "license": "Apache-2.0",
   "main": "dist/index.js",

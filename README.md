@@ -4,7 +4,7 @@
 
 | 包 | 职责 | 消费者 |
 | --- | --- | --- |
-| `@zrlog/ui` | 全部九套主题、外观类型与能力声明、控件样式、ZrLog 品牌组件 | admin 默认/其他主题、install 默认 M3 |
+| `@zrlog/ui` | 全部九套主题、外观类型与能力声明、控件样式、按需语义图标、ZrLog 品牌组件 | admin 默认/其他主题、install 默认 M3 |
 | `@zrlog/utils` | JSON SSE 解析与流读取等通用浏览器工具，不依赖 React 或 Ant Design | admin、install |
 
 UI 的主题标识与展示顺序只有 `packages/ui/src/themes.ts` 一个来源。显示文案由消费者传入，主题标识和已有用户选择保持兼容。品牌色、明暗和密度由宿主传入；公共库不监听或保存个人偏好。
@@ -31,8 +31,8 @@ UI 接入见 [packages/ui](packages/ui/README.md)，工具 API 见 [packages/uti
 
 ```json
 {
-  "@zrlog/ui": "0.1.2",
-  "@zrlog/utils": "0.1.2"
+  "@zrlog/ui": "0.2.0",
+  "@zrlog/utils": "0.2.0"
 }
 ```
 

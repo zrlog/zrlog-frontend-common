@@ -4,3 +4,8 @@ artifacts/
 .tmp/
 *.tsbuildinfo
 *.log
+/packages/ui/icons/
+/packages/ui/material-icons/
+/packages/ui/antd/
+/packages/ui/icons.js
+/packages/ui/feedback.js

@@ -1,6 +1,6 @@
 {
   "name": "@zrlog/ui",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "Shared ZrLog themes and presentation for React applications using Ant Design",
   "license": "Apache-2.0",
   "main": "dist/index.js",
@@ -10,7 +10,14 @@
     "README.md",
     "LICENSE",
     "themes.js",
-    "material.js"
+    "material.js",
+    "icons.js",
+    "icons",
+    "material-icons",
+    "THIRD_PARTY_NOTICES.md",
+    "licenses",
+    "feedback.js",
+    "antd"
   ],
   "sideEffects": false,
   "scripts": {
@@ -55,6 +62,31 @@
       "types": "./dist/material.d.ts",
       "import": "./dist/esm/material.js",
       "require": "./dist/material.js"
+    },
+    "./icons": {
+      "types": "./dist/icons.d.ts",
+      "import": "./dist/esm/icons.js",
+      "require": "./dist/icons.js"
+    },
+    "./icons/*": {
+      "types": "./dist/icons/*.d.ts",
+      "import": "./dist/esm/icons/*.js",
+      "require": "./dist/icons/*.js"
+    },
+    "./material-icons/*": {
+      "types": "./dist/material-icons/*.d.ts",
+      "import": "./dist/esm/material-icons/*.js",
+      "require": "./dist/material-icons/*.js"
+    },
+    "./feedback": {
+      "types": "./dist/feedback.d.ts",
+      "import": "./dist/esm/feedback.js",
+      "require": "./dist/feedback.js"
+    },
+    "./antd/*": {
+      "types": "./dist/antd/*.d.ts",
+      "import": "./dist/esm/antd/*.js",
+      "require": "./dist/antd/*.js"
     }
   },
   "typesVersions": {
@@ -64,6 +96,21 @@
       ],
       "material": [
         "dist/material.d.ts"
+      ],
+      "icons": [
+        "dist/icons.d.ts"
+      ],
+      "icons/*": [
+        "dist/icons/*.d.ts"
+      ],
+      "material-icons/*": [
+        "dist/material-icons/*.d.ts"
+      ],
+      "feedback": [
+        "dist/feedback.d.ts"
+      ],
+      "antd/*": [
+        "dist/antd/*.d.ts"
       ]
     }
   },
