@@ -45,3 +45,22 @@ React 18.3.1、Ant Design 6.4.3 为当前验证版本，二者和 React DOM 通�
 构建、测试与 npmjs 发布统一使用仓库根的 npm scripts，见 [根 README](../../README.md)。
 
 同时提供 CommonJS（Node / Jest）与 ESM（浏览器 bundler）入口，避免整库 CommonJS 阻止消费者移除未用组件。
+
+## Resource upload and selection
+
+`@zrlog/ui/resources` exports `ResourceDragger` and `ResourcePicker`.
+The host provides text, transport, authorization, resource URLs and data. Neither component
+knows admin routes or installs plugins.
+
+`ResourceDragger` accepts an async `upload(file, {signal, onProgress})` callback returning
+`{url, name?, size?, contentType?}`. Respect the abort signal; unmounting cancels the current
+upload and suppresses late callbacks. `onSuccess`, `onError` and `onUploadingChange` let the
+host present results and disable dependent actions. Without `upload`, choosing a local file
+does not send a request. The optional `resourcePicker.render(close)` renders the host's
+connected picker in a dialog; call `close()` after selection.
+
+`ResourcePicker` is controlled through `entries`, `roots`, `path`, `search` and `viewMode`.
+Provide navigation/search/view callbacks, `onSelect`, labels, loading/error/retry state, and
+optional `canOpen`/`canSelect`, preview/icon/size renderers. The host fetches and filters files;
+UI permissions complement server authorization. Search supports composition input and a
+500 ms debounce; navigating clears the search. Grid/list layouts adapt to the viewport.
