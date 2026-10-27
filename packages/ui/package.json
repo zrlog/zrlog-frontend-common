@@ -1,6 +1,6 @@
 {
   "name": "@zrlog/ui",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Shared ZrLog themes and presentation for React applications using Ant Design",
   "license": "Apache-2.0",
   "main": "dist/index.js",
@@ -17,6 +17,7 @@
     "THIRD_PARTY_NOTICES.md",
     "licenses",
     "feedback.js",
+    "resources.js",
     "antd"
   ],
   "sideEffects": false,
@@ -87,6 +88,11 @@
       "types": "./dist/antd/*.d.ts",
       "import": "./dist/esm/antd/*.js",
       "require": "./dist/antd/*.js"
+    },
+    "./resources": {
+      "types": "./dist/resources.d.ts",
+      "import": "./dist/esm/resources.js",
+      "require": "./dist/resources.js"
     }
   },
   "typesVersions": {
@@ -111,6 +117,9 @@
       ],
       "antd/*": [
         "dist/antd/*.d.ts"
+      ],
+      "resources": [
+        "dist/resources.d.ts"
       ]
     }
   },

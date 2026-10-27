@@ -19,3 +19,14 @@ test("ESM and CommonJS public entrypoints expose the same theme contract", async
     assert.equal(config.componentSize, "medium");
     assert.equal(typeof material.MaterialStyles, "function");
 });
+
+test("resource components are available through ESM, CommonJS and legacy resolvers", async () => {
+    const esm = await import("@zrlog/ui/resources");
+    const cjs = require("@zrlog/ui/resources");
+    const legacy = require("../resources.js");
+    for (const name of ["ResourceDragger", "ResourcePicker"]) {
+        assert.equal(typeof esm[name], "function");
+        assert.equal(typeof cjs[name], "function");
+        assert.equal(legacy[name], cjs[name]);
+    }
+});

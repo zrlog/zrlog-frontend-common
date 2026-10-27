@@ -9,3 +9,5 @@ export type { UiTheme, UiThemeDefinition } from "./themes";
 export type { UiThemeOptions, ThemeAppearance, ColorMode } from "./types";
 export { ZrLogMark } from "./ZrLogMark";
 export type { ZrLogMarkProps } from "./ZrLogMark";
+export {ResourceDragger, ResourcePicker} from "./resources";
+export type {ResourceDraggerProps, ResourceUploadContext, UploadedResource, ResourceEntry, ResourcePickerProps, ResourcePickerLabels} from "./resources";
