@@ -164,6 +164,9 @@ export const createMaterialTheme = (options: MaterialThemeOptions): ConfigProvid
                 DatePicker: field,
                 Select: {
                     ...field,
+                    // Keep outlined fields consistent across sizes; popup shape is set separately.
+                    borderRadiusSM: field.borderRadius,
+                    borderRadiusLG: field.borderRadius,
                     activeOutlineColor: c.primary,
                     optionSelectedBg: c.primaryContainer,
                     optionSelectedColor: c.onPrimaryContainer,

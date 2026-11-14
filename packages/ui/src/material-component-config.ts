@@ -14,6 +14,11 @@ export const materialComponentConfig = (c: ReturnType<typeof materialColors>, br
     input: {
         classNames: ({ props }) => ({ root: props.type === "search" ? "zrlog-m3-search-field" : "" }),
     },
+    select: {
+        ...materialIconConfig.select,
+        // Expressive menu shapes are separate from the outlined field's shape.
+        styles: { popup: { root: { borderRadius: 16 }, listItem: { borderRadius: 12 } } },
+    },
     switch: {
         classNames: ({ props }) => ({
             root: `zrlog-m3-switch${props.size === "small" ? " zrlog-m3-switch-small" : ""}`,
