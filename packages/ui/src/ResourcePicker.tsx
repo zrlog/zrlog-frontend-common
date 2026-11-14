@@ -102,7 +102,7 @@ export function ResourcePicker<T extends ResourceEntry>({
         {!narrow && roots.length > 0 && <nav aria-label={labels.title} style={{width: 200, flexShrink: 0,
             padding: token.paddingSM, overflow: "auto", borderInlineEnd: border, background: token.colorFillQuaternary}}>
             <Menu
-                selectedKeys={[activeRoot?.path ?? ""]} mode="inline" inlineIndent={0}
+                selectedKeys={[activeRoot?.path ?? ""]} mode="inline" inlineIndent={token.paddingSM}
                 style={{borderInlineEnd: 0, background: "transparent"}} disabled={disabled}
                 items={roots.map((root) => ({key: root.path, icon: icon(root), label: root.name}))}
                 onClick={({key}) => navigate(key)}
