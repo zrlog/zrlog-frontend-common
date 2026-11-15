@@ -60,6 +60,26 @@ overwrites `preview.icons` internally).
 
 ## Updating the subset
 
+### AI entry points
+
+`@zrlog/ui/icons/ai` represents AI capabilities and model settings (sparkles).
+`@zrlog/ui/icons/ai-writing` represents assisted writing (a magic wand).
+Both have regular/selected shapes and follow the current icon family; their
+`material-icons/*` entries are available for fixed Material consumers. Default
+themes use Material Symbols Rounded `auto_awesome` / `auto_fix_high`; other
+themes use ZrLog's matching outline/filled SVGs. Provider brand logos remain
+separate and belong in provider selection and identity displays.
+
+`icons/checklist` uses a checked document for pre-publication review; `icons/star`
+continues to represent ratings. `icons/crop` uses a crop frame for image cropping;
+`icons/cut` remains the scissors action. Both additions also have Material-only
+entries and use the same selected-state contract.
+
+These four additions are available in UI 0.2.4. Consumers must upgrade their
+pinned registry dependency before importing them. Use the local tarball for development.
+
+### Generation
+
 The manifest is tooling input only and is not imported by application code. Add a
 semantic mapping only when a consumer or a public control slot needs it. To regenerate
 from the pinned revision and the locally installed `@ant-design/icons-svg` version:
@@ -71,6 +91,9 @@ python3 scripts/icons/generate.py --material-dir .tmp/icons/material --legacy-js
 npm test
 npm run pack
 ```
+
+Pass `--icons ai ai-writing` to regenerate only these entries from a partial
+Material cache; omitting it regenerates the full manifest.
 
 Review the generated geometry and selected variants; glyphs with identical official
 variants share one shape. Never replace this with a dynamic import context, namespace

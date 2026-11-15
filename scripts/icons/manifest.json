@@ -8,6 +8,14 @@
     "legacy": "PlusCircleOutlined",
     "legacySelected": "PlusCircleFilled"
   },
+  "ai": {
+    "symbol": "auto_awesome",
+    "custom": "ai"
+  },
+  "ai-writing": {
+    "symbol": "auto_fix_high",
+    "custom": "ai-writing"
+  },
   "alert": {
     "symbol": "error",
     "legacy": "ExclamationCircleOutlined",
@@ -105,6 +113,10 @@
     "symbol": "check",
     "legacy": "CheckOutlined"
   },
+  "checklist": {
+    "symbol": "fact_check",
+    "legacy": "FileDoneOutlined"
+  },
   "chevron-down": {
     "symbol": "expand_more",
     "legacy": "DownOutlined"
@@ -168,6 +180,10 @@
   "cpu": {
     "symbol": "memory",
     "custom": "cpu"
+  },
+  "crop": {
+    "symbol": "crop",
+    "custom": "crop"
   },
   "cut": {
     "symbol": "content_cut",

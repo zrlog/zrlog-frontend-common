@@ -15,9 +15,12 @@ from pathlib import Path
 parser = argparse.ArgumentParser()
 parser.add_argument('--material-dir', type=Path, required=True)
 parser.add_argument('--legacy-json', type=Path, required=True)
+parser.add_argument('--icons', nargs='+', help='Regenerate only these semantic icons')
 args = parser.parse_args()
 root = Path(__file__).resolve().parents[2]
 manifest = json.loads((Path(__file__).parent / 'manifest.json').read_text())
+if args.icons:
+    manifest = {name: manifest[name] for name in args.icons}
 source = json.loads((Path(__file__).parent / 'source.json').read_text())
 legacy = json.loads(args.legacy_json.read_text())
 src = root / 'packages/ui/src'
@@ -53,7 +56,7 @@ for name, item in manifest.items():
     for variant, suffix in [('regular', ''), ('selected', '_fill1')]:
         material[variant] = xml_node(ET.parse(args.material_dir / f'{item["symbol"]}{suffix}_24px.svg').getroot())
     emit_glyph(name, 'material', material, f'Google Material Symbols Rounded/{item["symbol"]} @ {source["revision"]}')
-    emit_glyph(name, 'antd', legacy[name], f'Ant Design icons-svg {source["antDesignSvgVersion"]}' if 'legacy' in item else 'existing ZrLog custom SVG')
+    emit_glyph(name, 'antd', legacy[name], f'Ant Design icons-svg {source["antDesignSvgVersion"]}' if 'legacy' in item else 'ZrLog custom SVG')
     component = ''.join(part.title() for part in name.split('-')) + 'Icon'
     for family in ['icons', 'material-icons']:
         directory = src / family

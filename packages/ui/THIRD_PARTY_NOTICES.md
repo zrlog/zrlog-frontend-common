@@ -11,6 +11,7 @@ No external font, CDN, runtime download, library namespace or global glyph regis
   Source: https://github.com/ant-design/ant-design-icons.
   License: `licenses/ANT-DESIGN-LICENSE`.
 - CPU and memory legacy shapes retain the existing ZrLog SVGs.
+- AI, AI writing and crop legacy shapes are original ZrLog SVGs (Apache-2.0).
 - Webhook legacy shapes retain the existing Remix Icon SVGs (Remix Design,
   Apache-2.0; https://github.com/Remix-Design/RemixIcon). The Apache-2.0 license
   text is included in `licenses/MATERIAL-SYMBOLS-LICENSE`.
